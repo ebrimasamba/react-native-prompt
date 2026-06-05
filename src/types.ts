@@ -26,3 +26,12 @@ export interface PromptOptions {
   /** Android accent color for confirm button */
   tintColor?: string;
 }
+
+export interface PromptResult {
+  /** True when the prompt was dismissed via a cancel-styled button. */
+  cancelled: boolean;
+  text?: string;
+  password?: string;
+  buttonIndex?: number;
+  buttonText?: string;
+}

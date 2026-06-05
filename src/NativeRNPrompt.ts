@@ -10,9 +10,15 @@ export interface Spec extends TurboModule {
     passwordPlaceholder: string;
     tintColor: string;
     buttons: Array<{ text: string; style: string }>;
-  }): void;
+  }): Promise<{
+    cancelled?: boolean;
+    text?: string;
+    password?: string;
+    buttonIndex?: number;
+    buttonText?: string;
+  }>;
 }
 
-// Callbacks (confirm/cancel/button press) are delivered via DeviceEventEmitter,
-// not return values — keeps the codegen surface lean.
+// New Arch spec. The native module resolves the Promise with the result; there
+// is no DeviceEventEmitter side-channel.
 export default TurboModuleRegistry.get<Spec>('RNPrompt');
