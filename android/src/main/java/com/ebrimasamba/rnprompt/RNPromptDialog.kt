@@ -5,6 +5,7 @@ import android.content.DialogInterface
 import android.graphics.Color
 import android.text.InputType
 import android.util.TypedValue
+import android.view.WindowManager
 import android.widget.EditText
 import android.widget.LinearLayout
 import androidx.appcompat.app.AlertDialog
@@ -146,6 +147,10 @@ object RNPromptDialog {
 
     val dialog = builder.create()
     dialog.setCanceledOnTouchOutside(false)
+    // Auto-focus the first input and surface the soft keyboard on open, matching
+    // iOS Alert.prompt behaviour.
+    textInput.requestFocus()
+    dialog.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE)
     dialog.show()
 
     // Button colors can only be applied once the dialog (and its buttons) exist.
