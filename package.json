@@ -1,6 +1,6 @@
 {
   "name": "@ebrimasamba/react-native-prompt",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "A cross platform prompt alert for both android and ios",
   "main": "./lib/module/index.js",
   "types": "./lib/typescript/src/index.d.ts",
@@ -64,7 +64,7 @@
     "@eslint/compat": "^2.0.3",
     "@eslint/eslintrc": "^3.3.5",
     "@eslint/js": "^10.0.1",
-    "@jest/globals": "^30.0.0",
+    "@jest/globals": "30.4.1",
     "@react-native/babel-preset": "0.85.0",
     "@react-native/eslint-config": "0.85.0",
     "@react-native/jest-preset": "0.85.0",
@@ -76,7 +76,7 @@
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-ft-flow": "^3.0.11",
     "eslint-plugin-prettier": "^5.5.5",
-    "jest": "^30.3.0",
+    "jest": "30.4.1",
     "lefthook": "^2.1.4",
     "prettier": "^3.8.1",
     "react": "19.2.0",
@@ -93,6 +93,13 @@
   "workspaces": [
     "example"
   ],
+  "resolutions": {
+    "@jest/core": "30.4.1",
+    "jest-runtime": "30.4.1",
+    "jest-circus": "30.4.1",
+    "jest-config": "30.4.1",
+    "jest-environment-node": "30.4.1"
+  },
   "packageManager": "yarn@4.11.0",
   "react-native-builder-bob": {
     "source": "src",
