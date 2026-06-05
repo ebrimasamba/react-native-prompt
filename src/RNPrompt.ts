@@ -17,6 +17,11 @@ const DEFAULT_BUTTONS: PromptButton[] = [
  * callbacks declared in {@link PromptOptions}.
  */
 export function prompt(options: PromptOptions): Promise<PromptResult> {
+  if (Platform.OS === 'web') {
+    return Promise.reject(
+      new Error('@ebrimasamba/react-native-prompt is not supported on web.')
+    );
+  }
   const buttons = options.buttons?.length ? options.buttons : DEFAULT_BUTTONS;
   return Platform.OS === 'ios'
     ? promptIOS(options, buttons)
