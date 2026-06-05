@@ -5,6 +5,8 @@ A cross-platform prompt/alert dialog for React Native with support for both the 
 [![npm version](https://badge.fury.io/js/%40ebrimasamba%2Freact-native-prompt.svg)](https://badge.fury.io/js/%40ebrimasamba%2Freact-native-prompt)
 [![npm downloads](https://img.shields.io/npm/dm/@ebrimasamba/react-native-prompt.svg)](https://www.npmjs.com/package/@ebrimasamba/react-native-prompt)
 
+![React Native Prompt on Android and iOS](./rnp.png)
+
 ## Features
 
 - ✅ **Cross-platform** - Native `AlertDialog` on Android, `Alert.prompt` on iOS
