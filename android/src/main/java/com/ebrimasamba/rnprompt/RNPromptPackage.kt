@@ -1,4 +1,4 @@
-package com.prompt
+package com.ebrimasamba.rnprompt
 
 import com.facebook.react.BaseReactPackage
 import com.facebook.react.bridge.NativeModule
@@ -7,10 +7,10 @@ import com.facebook.react.module.model.ReactModuleInfo
 import com.facebook.react.module.model.ReactModuleInfoProvider
 import java.util.HashMap
 
-class PromptPackage : BaseReactPackage() {
+class RNPromptPackage : BaseReactPackage() {
   override fun getModule(name: String, reactContext: ReactApplicationContext): NativeModule? {
-    return if (name == PromptModule.NAME) {
-      PromptModule(reactContext)
+    return if (name == RNPromptModule.NAME) {
+      RNPromptModule(reactContext)
     } else {
       null
     }
@@ -18,9 +18,9 @@ class PromptPackage : BaseReactPackage() {
 
   override fun getReactModuleInfoProvider() = ReactModuleInfoProvider {
     mapOf(
-      PromptModule.NAME to ReactModuleInfo(
-        name = PromptModule.NAME,
-        className = PromptModule.NAME,
+      RNPromptModule.NAME to ReactModuleInfo(
+        name = RNPromptModule.NAME,
+        className = RNPromptModule.NAME,
         canOverrideExistingModule = false,
         needsEagerInit = false,
         isCxxModule = false,

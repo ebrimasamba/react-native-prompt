@@ -1,5 +1,5 @@
-import Prompt from './NativePrompt';
+import RNPrompt from './NativeRNPrompt';
 
 export function multiply(a: number, b: number): number {
-  return Prompt.multiply(a, b);
+  return RNPrompt.multiply(a, b);
 }

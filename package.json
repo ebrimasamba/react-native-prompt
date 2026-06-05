@@ -1,5 +1,5 @@
 {
-  "name": "react-native-prompt",
+  "name": "@ebrimasamba/react-native-prompt",
   "version": "0.1.0",
   "description": "A cross platform prompt alert for both android and ios",
   "main": "./lib/module/index.js",
@@ -112,11 +112,11 @@
     ]
   },
   "codegenConfig": {
-    "name": "PromptSpec",
+    "name": "RNPromptSpec",
     "type": "modules",
     "jsSrcsDir": "src",
     "android": {
-      "javaPackageName": "com.prompt"
+      "javaPackageName": "com.ebrimasamba.rnprompt"
     }
   },
   "jest": {

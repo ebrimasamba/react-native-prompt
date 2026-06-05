@@ -1,4 +1,4 @@
-# react-native-prompt
+# @ebrimasamba/react-native-prompt
 
 A cross platform prompt alert for both android and ios
 
@@ -6,7 +6,7 @@ A cross platform prompt alert for both android and ios
 
 
 ```sh
-npm install react-native-prompt
+npm install @ebrimasamba/react-native-prompt
 ```
 
 
@@ -14,7 +14,7 @@ npm install react-native-prompt
 
 
 ```js
-import { multiply } from 'react-native-prompt';
+import { multiply } from '@ebrimasamba/react-native-prompt';
 
 // ...
 

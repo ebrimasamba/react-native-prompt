@@ -2,7 +2,7 @@
   "compilerOptions": {
     "rootDir": ".",
     "paths": {
-      "react-native-prompt": ["./src/index"]
+      "@ebrimasamba/react-native-prompt": ["./src/index"]
     },
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,

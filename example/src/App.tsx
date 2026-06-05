@@ -1,5 +1,5 @@
 import { Text, View, StyleSheet } from 'react-native';
-import { multiply } from 'react-native-prompt';
+import { multiply } from '@ebrimasamba/react-native-prompt';
 
 const result = multiply(3, 7);
 
