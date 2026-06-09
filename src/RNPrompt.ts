@@ -2,7 +2,20 @@
 
 import { Alert, Platform } from 'react-native';
 import NativeRNPrompt from './NativeRNPrompt';
-import type { PromptButton, PromptOptions, PromptResult } from './types';
+import type {
+  PromptButton,
+  PromptOptions,
+  PromptResult,
+  PromptWebConfig,
+} from './types';
+
+/**
+ * Customize the web prompt's appearance. No-op on native platforms (iOS and
+ * Android render the OS dialog); the real implementation lives in
+ * `RNPrompt.web.ts`. Declared here so the symbol exists and typechecks on
+ * every platform.
+ */
+export function configurePrompt(_config: PromptWebConfig): void {}
 
 // Mirrors iOS Alert.prompt's default Cancel/OK pair when the caller omits buttons.
 const DEFAULT_BUTTONS: PromptButton[] = [

@@ -9,13 +9,14 @@ A cross-platform prompt/alert dialog for React Native with support for both the 
 
 ## Features
 
-- ✅ **Cross-platform** - Native `AlertDialog` on Android, `Alert.prompt` on iOS
+- ✅ **Cross-platform** - Native `AlertDialog` on Android, `Alert.prompt` on iOS, an unstyled customizable modal on Web
 - ✅ **New & old architecture** - TurboModule (New Arch) with Bridge (Old Arch) fallback
 - ✅ **Multiple input types** - plain text, secure (password), and login + password
 - ✅ **Custom buttons** - up to 3, with `default` / `cancel` / `destructive` styles
 - ✅ **Promise-based API** - `async`/`await` with a fully typed result
 - ✅ **Callbacks** - `onConfirm`, `onCancel`, and per-button `onPress`
 - ✅ **Android theming** - accent `tintColor` and input placeholders
+- ✅ **Web support** - zero-setup, unstyled DOM modal you theme with your own CSS
 - ✅ **No permissions required**
 - ✅ **Fully typed** - written in TypeScript
 - ✅ **Expo compatible** - via a custom dev client / prebuild
@@ -123,6 +124,60 @@ prompt({
 });
 ```
 
+### Web
+
+On web there is no native prompt, so `prompt()` renders its own modal in the DOM and resolves the same `Promise<PromptResult>` — no provider or host component to mount, and the same API works across all platforms:
+
+```ts
+import { prompt } from '@ebrimasamba/react-native-prompt';
+
+const result = await prompt({ title: 'Enter your name', placeholder: 'Name' });
+```
+
+It ships **unstyled** by design — only the overlay positioning is inline. You theme it with your own CSS via these stable hooks:
+
+| Class | Element |
+| --- | --- |
+| `.rnp-overlay` | Full-screen backdrop |
+| `.rnp-dialog` | Dialog container (`role="dialog"`) — also carries `data-rnp-type` |
+| `.rnp-title` | Title |
+| `.rnp-message` | Message / body |
+| `.rnp-field` | Wrapper around each input |
+| `.rnp-input` | Text / password input |
+| `.rnp-buttons` | Button row |
+| `.rnp-button` | Action button — carries `data-rnp-style="default \| cancel \| destructive"` |
+
+```css
+.rnp-overlay { background: rgba(0, 0, 0, 0.45); }
+.rnp-dialog { padding: 20px; border-radius: 12px; background: #fff; }
+.rnp-button[data-rnp-style='default'] { background: #2563eb; color: #fff; }
+```
+
+Behavior matches native: `Enter` confirms, `Escape` cancels, and clicking the overlay does **not** dismiss.
+
+#### Customizing further
+
+Use `configurePrompt` (a no-op on native) to override class names or replace the markup entirely:
+
+```ts
+import { configurePrompt } from '@ebrimasamba/react-native-prompt';
+
+// Swap the CSS hooks for your own design system classes.
+configurePrompt({
+  classNames: { dialog: 'card', button: 'btn', input: 'text-field' },
+});
+
+// …or render completely custom markup and resolve via the context callbacks.
+configurePrompt({
+  render: ({ options, buttons, confirm, cancel }) => {
+    const el = document.createElement('div');
+    // build your own dialog, then call confirm(buttonIndex, text, password)
+    // or cancel() to resolve the prompt.
+    return el;
+  },
+});
+```
+
 ## API Reference
 
 ### `prompt(options)`
@@ -181,6 +236,7 @@ interface PromptResult {
 
 - ✅ **Android** - Native Material `AlertDialog` with full feature support
 - ✅ **iOS** - Backed by the built-in `Alert.prompt`
+- ✅ **Web** - Unstyled DOM modal, themed with your own CSS (see [Web](#web)); zero setup
 
 > **Note:** `tintColor`, `placeholder`, and `passwordPlaceholder` are Android-only — iOS `Alert.prompt` does not support them. `login-password` styling is also more limited on iOS.
 
